@@ -1,13 +1,27 @@
 # Multilevel-Models-Monte-Carlo-Simulation
 
 ### What is this?
+##
 
 This is the script from my dissertation. It is written in SAS. It was my first step into creating original code - written under very patient tutelage from my dissertation chair.
 While I did my then-best to make it readable, it is not optimized to run quickly. Knowing what I know now, I could have - for example - programmed it in Python and made it run much faster using things like list comprehensions. 
 But, while it's not pretty it got the job done, and was a terrific introduction into thinking about statistical programming.
 
 ### What does it do (in _English_)?
+#
 
+Real-world datasets present challenges to researchers and practitioners relying on statistical models that unrealistically make assumptions about the properties of the dataset. Often individuals/cases who share some qualitative characteristic (e.g. college major or city of residence) have values that are more similar to each other than they are to individuals outside of that cluster. That is, people from Texas are more like other people from Texas than people from Kentucky or Florida. 
+
+This is called clustering. Statistically, this violates the assumption of non-independence inherent in regression models. This non-independence can be addressed with ANOVA (dummy variable or one-hot encoding) approaches when these subgroups are few; the 'new' variable is simply included in the regression model. However, when there are enough subgroups (say, 30 or more). The scores on a given column/variable between subgroups begin to take on a distribution of their own, and the ANOVA approach is no longer practical for analysis.
+
+One method to address this is Multi-Level Modeling - which goes by several aliases, including hierarchical linear modeling or random-effects models. In this method effects are estimated for both the individual/row (termed level 1 effects) and for the subgroups that rows belong to (termed level 2 effects). This method has assumptions of its own, for example that subgroups of individuals have even numbers within a dataset. For example, that each manager supervises exactly 5 employees or that exactly 30 people from each state responded to a survey.
+
+In order to evaluate this assumption, I performed a Monte Carlo simulation across a variety of different potential populations, each exhibiting some condition of dataset characteristics.
+
+In total, there were 6,144 populations specified. Given that simulating randomness is part of the Monte Carlo procedure, conventionally each condition is simulated 1000 times.
+This means that in all there were 6,144,000 datasets, with between 125 and 2000 rows per dataset. These datasets needed to then be analyzed and the results from the analyses averaged and themselves restructured into a useable format.
+
+This is what the functions contained in this repo's script do. More information on each function is contained below. It should be noted that despite the scale of the simulation, this code should be considered incomplete. Most notably, as it is the code only specifies populations with random intercepts. Individuals familiar with mixed-models will note that configurations with randomness between clusters on slope (i.e. coefficent) terms is also possible. As is randomness on _both_ intercept and slope terms.
 
 
 ### What does it do?
@@ -71,7 +85,7 @@ Returns analysis on datasets created by mixedmod, using SAS's `proc mixed` proce
 
 Example usage: `%mixedanalyze(start = 64, stop = 128, type = 1)`
 
-This would request null, regression, and mixed-model analysis using the 3 input (i.e. predictor) variables specified in 'mixedmod` above. The results would be output and saved to folders located at "C:\SAS_MC\Test\" by default. SAS produces several difference output tables. The current script requests the saving of NFixed, NCov, Fixed, Random, Coverge, Interate, NObs, FitStats, Type3, CovParms, and Clust output tables.
+This would request null, regression, and mixed-model analysis using the 3 input (i.e. predictor) variables specified in `mixedmod` above. The results would be output and saved to folders located at "C:\SAS_MC\Test\" by default. SAS produces several difference output tables. The current script requests the saving of NFixed, NCov, Fixed, Random, Coverge, Interate, NObs, FitStats, Type3, CovParms, and Clust output tables.
 Note that in this case the call is requesting analysis on 128-64 = 64 conditions. Assuming 1,000 datasets per condition by convention, this is 64,000 datasets (with subs * nclust rows per dataset) for analysis.
 For further information on `proc mixed` in SAS and its associated output, [go here.](http://support.sas.com/documentation/cdl/en/statug/66859/HTML/default/viewer.htm#statug_mixed_overview.htm)
 
