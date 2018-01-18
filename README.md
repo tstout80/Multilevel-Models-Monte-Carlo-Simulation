@@ -21,9 +21,9 @@ The script has 3 main steps:
 
 To accomplish this, it relies on 3 respective user-defined macros(i.e. functions):
 
-2. `<mixedmod>`
-2. `<mixedanalyze>`
-2. `<mixedresults>`
+1. `mixedmod`
+1. `<mixedanalyze>`
+1. `<mixedresults>`
 
 mixedmod(condition, reps, clustdist, subs, nclust, ICC, L1effect, L2effect, L12effect):
 
@@ -58,4 +58,4 @@ mixedanalyze(start, stop, type):
 
 	type: Integer between 1 and 4. All models use SAS's `<proc mixed>` procedure, with the /random line omitted for regression-only models. Null models are necessary for computing the empirical ICC values. Regression-only models, are necessary to compute how much bias was produced in estimates by ignoring statistical non-independence.
 
-		3.  
+		1.   
