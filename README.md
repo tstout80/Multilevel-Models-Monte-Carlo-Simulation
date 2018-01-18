@@ -85,7 +85,7 @@ Returns analysis on datasets created by mixedmod, using SAS's `proc mixed` proce
 
 Example usage: `%mixedanalyze(start = 64, stop = 128, type = 1)`
 
-This would request null, regression, and mixed-model analysis using the 3 input (i.e. predictor) variables specified in `mixedmod` above. The results would be output and saved to folders located at "C:\SAS_MC\Test\" by default. SAS produces several difference output tables. The current script requests the saving of NFixed, NCov, Fixed, Random, Coverge, Interate, NObs, FitStats, Type3, CovParms, and Clust output tables.
+This would request null, regression, and mixed-model analysis using the 3 input (i.e. predictor) variables specified in `mixedmod` above. The results would be output and saved to folders located at "C:\SAS_MC\Test\" by default. SAS produces several different output tables. The current script requests the saving of NFixed, NCov, Fixed, Random, Coverge, Interate, NObs, FitStats, Type3, CovParms, and Clust output tables.
 Note that in this case the call is requesting analysis on 128-64 = 64 conditions. Assuming 1,000 datasets per condition by convention, this is 64,000 datasets (with subs * nclust rows per dataset) for analysis.
 For further information on `proc mixed` in SAS and its associated output, [go here.](http://support.sas.com/documentation/cdl/en/statug/66859/HTML/default/viewer.htm#statug_mixed_overview.htm)
 
