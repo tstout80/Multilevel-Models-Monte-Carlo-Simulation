@@ -50,7 +50,7 @@ To accomplish this, it relies on 3 respective user-defined macros(i.e. functions
 
 	subs: Takes a positive integer. The m value in mixed model notation. Returns an equivalent number of rows (i.e. subjects) PER CLUSTER for clustdist = 1, or some slightly-randomized number of rows around this value for clustdist = 2. Ranged between 5 and 20 in the dissertation.
 
-	nclust: A positive integer. The k term in mixed model notation. Specifies the number of clusters (i.e. subgroups) within the dataset. Thus, the total number of rows in a given dataset is roughly equal to subs * clustdist.
+	nclust: A positive integer. The k term in mixed model notation. Specifies the number of clusters (i.e. subgroups) within the dataset. Thus, the total number of rows in a given dataset is roughly equal to subs * nclust.
 
 	ICC: A positive float value. Denoted with rho in mixed model notation. In practice between 0 and 1; (0 and 0.8 in the dissertation) although no out-of-range error is raised for inputs exceeding this value. The inter-class correlation coefficient, which is a measure of the proportion of variance in Y due to clustering between rows belonging to the same subgroup, or statistical non-independence. The higher the ICC, the more values of a row are similar to values of other rows in the same cluster. This occurence is the primary motivation for using mixed-model analysis.
 
