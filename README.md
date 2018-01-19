@@ -20,7 +20,7 @@ One method to address this is Multi-Level Modeling - which goes by several alias
 In order to evaluate this assumption, I performed a Monte Carlo simulation across a variety of different potential populations, each exhibiting some condition of dataset characteristics.
 
 In total, there were 6,144 populations specified. Given that simulating randomness is part of the Monte Carlo procedure, conventionally each condition is simulated 1000 times.
-This means that in all there were 6,144,000 datasets, with between 125 and 2000 rows per dataset. These datasets needed to then be analyzed and the results from the analyses averaged and themselves restructured into a useable format.
+This means that in all there were 6,144,000 datasets, with between 125 and 2000 rows per dataset. These datasets needed to then be analyzed and the results from the analyses averaged and themselves restructured into a useable format. This means accessing elements of several different tables, combining them, and then delivering them in a useful way.
 
 This is what the functions contained in this repo's script do. More information on each function is contained below. It should be noted that despite the scale of the simulation, this code should be considered incomplete. Most notably, as it is the code only specifies populations with random intercepts. Individuals familiar with mixed-models will note that configurations with randomness between clusters on slope (i.e. coefficent) terms is also possible. As is randomness on _both_ intercept and slope terms.
 
